@@ -22,6 +22,7 @@ spec:
       containers:
       - name: nginxv3
         image: bipul34/ngnix1:latest
+        imagePullPolicy: Always
 
 
         ports:
