@@ -1,7 +1,7 @@
 #Create Custom Container Image
 #Push to DockerHub Registry
 ---
-- hosts: localhost
+- hosts: 192.168.100.138
   gather_facts: false
   vars_files:
           - vault.yaml
