@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginxv3
+  labels:
+    app: nginxv3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginxv3
+  template:
+    metadata:
+      labels:
+        app: nginxv3
+    spec:
+      containers:
+      - name: nginxv3
+        image: bipul34/ngnix1:latest
+
+
+        ports:
+        - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ngnix-service
+spec:
+  selector:
+    app: nginxv3
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
