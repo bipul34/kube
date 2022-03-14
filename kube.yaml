@@ -1,0 +1,32 @@
+#Create Custom Container Image
+#Push to DockerHub Registry
+---
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+          - vault.yml
+  tasks: 
+  
+  - name: Build image and with build args
+    docker_image:
+      name: ngnix1
+      build:
+        path: /tmp/kube
+        pull: no
+        args:
+          listen_port: 80
+      source: build
+
+  - name: Log into DockerHub
+    docker_login:
+     username: "{{ username }}"
+     password: "{{ password }}"
+
+    
+  - name: Push to docker hub
+    docker_image:
+      name: ngnix1
+      repository: bipul34/ngnix1:latest
+      push: yes
+      source: local
+
