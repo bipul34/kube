@@ -2,7 +2,7 @@
 cat <<EOF > index.html
 <html>
 <body>
-<p>hostname is: $(hostname) and the version is 1.0.1 </p>
+<p>hostname is: $(hostname) and the version is 1.0.2 </p>
 </body>
 </html>
 EOF
