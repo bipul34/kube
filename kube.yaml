@@ -5,6 +5,7 @@
   gather_facts: false
   vars_files:
           - vault.yaml
+          - version.yaml
   tasks: 
   
   - name: Build image and with build args
@@ -26,7 +27,7 @@
   - name: Push to docker hub
     docker_image:
       name: ngnix1
-      repository: bipul34/ngnix1:latest
+      repository: bipul34/ngnix1:{{version}}
       push: yes
       source: local
 
